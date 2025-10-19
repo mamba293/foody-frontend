@@ -1,6 +1,7 @@
 import { Router } from 'express';
+import { body } from "express-validator";
+
 import userController from '../controllers/user-controller.js';
-import { body } from "express-validator"
 
 const userRouter = Router();
 
@@ -14,7 +15,7 @@ userRouter.post('/login', userController.login);
 userRouter.post('/logout', userController.logout);
 userRouter.get('/activate/:link', userController.activate)
 userRouter.get('/refresh', userController.refresh)
-userRouter.get('/getusers', userController.getUsers)
+
 
 
 export default userRouter;
