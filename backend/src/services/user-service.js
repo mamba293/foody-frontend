@@ -1,14 +1,12 @@
 import bcrypt from "bcrypt"
 import { v4 as uuidv4 } from 'uuid';
-import dotenv from "dotenv"
-
+import "dotenv/config";
 
 import User from '../models/User.js'
 import mailService from "./mail-service.js";
 import tokenService from "./token-service.js";
 import UserDto from "../dtos/user-dtos.js";
 
-dotenv.config()
 
 class UserService {
     async registration(email, phone, password) {

@@ -1,7 +1,6 @@
-import userService from "../services/user-service.js"
-import dotenv from "dotenv"
+import "dotenv/config"; 
 
-dotenv.config()
+import userService from "../services/user-service.js"
 
 class UserController {
     async registration(req, res, next) {

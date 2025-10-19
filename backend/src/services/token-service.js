@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv'
-import Token from '../models/Token.js'
+import "dotenv/config";
 
-dotenv.config()
+import Token from '../models/Token.js'
 
 class TokenService {
     generateTokens(payload) {
