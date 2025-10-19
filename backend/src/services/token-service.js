@@ -50,13 +50,8 @@ class TokenService {
 
     async findToken(refreshToken) {
         const tokenData = await Token.findOne({ where: { refresh_token: refreshToken } })
-        // if (!tokenData) {
-        //     throw ApiError.UnatuorizedError();
-        // }
         return tokenData;
     }
-
-
 }
 
 export default new TokenService()
