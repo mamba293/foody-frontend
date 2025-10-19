@@ -8,7 +8,7 @@ class UserController {
         try {
             const { email, phone, password } = req.body;
             const userData = await userService.registration(email, phone, password)
-            res.cookie("refreshtoken", userData.refreshToken, { maxAge: 15 * 24 * 60 * 60 * 1000, httpOnly: true })
+            res.cookie("refreshToken", userData.refreshToken, { maxAge: 15 * 24 * 60 * 60 * 1000, httpOnly: true })
             return res.json(userData)
         } catch (e) {
             console.log(e)
