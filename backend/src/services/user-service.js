@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 import User from '../models/User.js'
-import UserDto from "../dtos/user-dtos.js";
 import mailService from "./mail-service.js";
 import tokenService from "./token-service.js";
 import UserDto from "../dtos/user-dtos.js";
@@ -16,11 +15,16 @@ class UserService {
         }
         const hash_password = await bcrypt.hash(password, 5)
         const activationLink = uuidv4();
-        const user = await User.create({ email, phone_number, hash_password, activationLink })
+        const user = await User.create({
+            email,
+            phone_number: phone,
+            hash_password,
+            activation_link: activationLink
+        })
         await mailService.sendActivateMail(email, activationLink)
 
         const userDto = new UserDto(user)
-        const tokens = tokenService.generateTokens({...userDto})
+        const tokens = tokenService.generateTokens({ ...userDto })
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
 
         return {
