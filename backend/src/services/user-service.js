@@ -6,13 +6,14 @@ import User from '../models/User.js'
 import mailService from "./mail-service.js";
 import tokenService from "./token-service.js";
 import UserDto from "../dtos/user-dtos.js";
+import ApiError from "../exceptions/api-error.js";
 
 
 class UserService {
     async registration(email, phone, password) {
         const candidate = await User.findOne({ where: { email } })
         if (candidate) {
-            throw new Error(`User with ${email} already registered`)
+            throw ApiError.BadRequest(`User with ${email} already registered`)
         }
         const hash_password = await bcrypt.hash(password, 5)
         const activationLink = uuidv4();
@@ -37,7 +38,7 @@ class UserService {
     async activate(activation_link) {
         const user = await User.findOne({ where: { activation_link } })
         if (!user) {
-            throw new Error("User is not defined")
+            throw ApiError.BadRequest("User is not defined")
         }
         user.is_activated = true;
         await user.save();
