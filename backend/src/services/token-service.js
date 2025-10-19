@@ -34,7 +34,7 @@ class TokenService {
     async validateAccessToken(token) {
         try {
             const userData = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-            returnuserData;
+            return userData;
         } catch (e) {
             return null;
         }
@@ -42,7 +42,7 @@ class TokenService {
     async validateRefreshToken(token) {
         try {
             const userData = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-            returnuserData;
+            return userData;
         } catch (e) {
             return null;
         }
