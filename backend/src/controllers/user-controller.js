@@ -46,7 +46,7 @@ class UserController {
         try {
             const activationLink = req.params.link
             await userService.activate(activationLink)
-            return res.redirect(process.env.CLIENT_URL)
+            return res.redirect(`${process.env.CLIENT_URL}/dashboard`)
         } catch (e) {
             next(e)
         }

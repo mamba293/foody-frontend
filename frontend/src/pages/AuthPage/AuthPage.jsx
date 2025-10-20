@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { registerUserAction } from "./api";
+import { registerUserAction } from "./api.js";
 
 export default function AuthPage() {
  const [email, setEmail] = useState("");
@@ -9,8 +9,8 @@ export default function AuthPage() {
  const handleRegisterClick = async () => {
   try {
    const data = await registerUserAction(email, phone, password);
-   alert("Check your email for activation link!");
    console.log(data);
+   alert("Check your email for activation link!");
   } catch (err) {
    alert(err.message);
   }
