@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { registerUserAction } from "./api.js";
+import { registerUserAction } from "./../../api/userApi";
 
 export default function AuthPage() {
  const [email, setEmail] = useState("");
