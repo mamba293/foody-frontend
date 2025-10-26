@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { registerUserAction } from "./../../api/userApi.js";
 import registerSchema from "./shema.js";
+import styles from "./RegisterForm.module.css";
 
 export default function RegisterForm() {
  const {
@@ -28,7 +29,7 @@ export default function RegisterForm() {
  };
 
  return (
-  <form onSubmit={handleSubmit(onSubmit)}>
+  <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
    <label>
     Введите Email
     <input {...register("email")} type="text" />
