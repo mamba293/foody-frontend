@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
- /* Light Theme - Yandex.Eda inspired colors */
  --color-primary: #ffcc00;
  --color-primary-dark: #e6b800;
  --color-primary-light: #ffd633;
@@ -13,7 +12,7 @@
  --color-text-primary: #1a1a1a;
  --color-text-secondary: #666666;
  --color-text-tertiary: #999999;
- --color-text-on-primary: #1a1a1a;
+ --color-text-on-primary: #888888;
 
  --color-border: #e0e0e0;
  --color-border-light: #f0f0f0;
@@ -143,30 +142,4 @@ p {
 
 .text-tertiary {
  color: var(--color-text-tertiary);
-}
-
-.mb-sm {
- margin-bottom: var(--spacing-sm);
-}
-.mb-md {
- margin-bottom: var(--spacing-md);
-}
-.mb-lg {
- margin-bottom: var(--spacing-lg);
-}
-.mb-xl {
- margin-bottom: var(--spacing-xl);
-}
-
-.mt-sm {
- margin-top: var(--spacing-sm);
-}
-.mt-md {
- margin-top: var(--spacing-md);
-}
-.mt-lg {
- margin-top: var(--spacing-lg);
-}
-.mt-xl {
- margin-top: var(--spacing-xl);
 }
