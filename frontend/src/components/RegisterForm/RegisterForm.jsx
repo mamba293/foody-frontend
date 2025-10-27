@@ -32,12 +32,12 @@ export default function RegisterForm() {
   <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
    <label>
     Введите Email
-    <input {...register("email")} type="email" />
+    <input {...register("email")} type="text" />
     {errors.email && <span>{errors.email.message}</span>}
    </label>
    <label>
     Введи номер телефона
-    <input {...register("phone")} type="tel" />
+    <input {...register("phone")} type="text" />
     {errors.phone && <span>{errors.phone.message}</span>}
    </label>
    <label>

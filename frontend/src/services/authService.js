@@ -1,6 +1,6 @@
 import { useAuthStore } from "./../stores/authStore.js";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "http://localhost:5000/api/users";
 
 export class AuthService {
     static async apiFetch(endpoint, options = {}) {
@@ -44,7 +44,7 @@ export class AuthService {
     static async refreshAccessToken() {
         const res = await fetch(`${API_URL}/refresh`, {
             method: "GET",
-            credentials: "include",
+            credentials: "include",     
         });
 
         if (!res.ok) throw new Error("Не удалось обновить токен");
@@ -55,7 +55,7 @@ export class AuthService {
     }
 
     static async register(registerUserData) {
-        const data = await AuthService.apiFetch("/users/register", {
+        const data = await AuthService.apiFetch("/register", {
             method: "POST",
             body: JSON.stringify(registerUserData),
         });

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
-import AuthForm from "../../components/AuthForm/AuthForm";
+import RegisterForm from "./../../components/RegisterForm/RegisterForm";
+import AuthForm from "./../../components/AuthForm/AuthForm";
 import styles from "./AuthPage.module.css";
 
 export default function AuthPage() {

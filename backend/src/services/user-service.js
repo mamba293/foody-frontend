@@ -70,7 +70,7 @@ class UserService {
         return token;
     }
 
-    async refresh(refreshToken) {
+    async refresh(refreshToken) {   
         if (!refreshToken) {
             throw ApiError.UnatuorizedError();
         }

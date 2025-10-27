@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import authShema from "./shema";
+import authShema from "./shema.js";
 import styles from "./AuthForm.module.css";
 import { AuthService } from "./../../services/authService.js";
 
@@ -21,6 +21,7 @@ export default function AuthForm() {
    localStorage.setItem("token", data.accessToken);
    console.log(data);
   } catch (err) {
+   console.log(err);
    setError("root", {
     message: "Что-то пошло не так",
    });
@@ -28,13 +29,19 @@ export default function AuthForm() {
  };
 
  return (
-  <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_form}>
-   <label>Ведите email</label>
-   <input type="text" {...register("email")} />
-   {errors.email && <span>{errors.email.message}</span>}
-   <label>Ведите пароль</label>
-   <input type="text" {...register("password")} />
-   {errors.password && <span>{errors.password.message}</span>}
+  <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+   <label>
+    Ведите email
+    <input type="text" {...register("email")} />
+    {errors.email && <span>{errors.email.message}</span>}
+   </label>
+
+   <label>
+    Ведите пароль
+    <input type="password" {...register("password")} />
+    {errors.password && <span>{errors.password.message}</span>}
+   </label>
+
    <button disabled={isSubmitting} type="submit">
     {isSubmitting ? "Загрузка..." : "Войти"}
    </button>
