@@ -21,6 +21,7 @@ export default function AuthForm() {
  const onSubmit = async (userLoginData) => {
   try {
    const data = await AuthService.login(userLoginData);
+   console.log(data)
    nav("/dashboard");
   } catch (err) {
    console.log(err);
