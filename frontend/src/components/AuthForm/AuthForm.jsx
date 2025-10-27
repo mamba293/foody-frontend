@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router";
 
 import authShema from "./shema.js";
 import styles from "./AuthForm.module.css";
 import { AuthService } from "./../../services/authService.js";
 
 export default function AuthForm() {
+ const nav = useNavigate();
+
  const {
   register,
   handleSubmit,
@@ -18,8 +21,7 @@ export default function AuthForm() {
  const onSubmit = async (userLoginData) => {
   try {
    const data = await AuthService.login(userLoginData);
-   localStorage.setItem("token", data.accessToken);
-   console.log(data);
+   nav("/dashboard");
   } catch (err) {
    console.log(err);
    setError("root", {
