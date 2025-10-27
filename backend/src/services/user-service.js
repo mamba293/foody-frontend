@@ -44,26 +44,26 @@ class UserService {
         await user.save();
     }
 
-    async login(email, password) {
-        const user = await User.findOne({ where: { email } })
-        if (!user) {
-            throw ApiError.BadRequest(`User is not registered`)
-        }
+        async login(email, password) {
+            const user = await User.findOne({ where: { email } })
+            if (!user) {
+                throw ApiError.BadRequest(`User is not registered`)
+            }
 
-        const isPassEquals = await bcrypt.compare(password, user.hash_password)
-        if (!isPassEquals) {
-            throw ApiError.BadRequest(`Password is not valide`)
-        }
-        const userDto = new UserDto(user);
-        const tokens = tokenService.generateTokens({ ...userDto })
+            const isPassEquals = await bcrypt.compare(password, user.hash_password)
+            if (!isPassEquals) {
+                throw ApiError.BadRequest(`Password is not valide`)
+            }
+            const userDto = new UserDto(user);
+            const tokens = tokenService.generateTokens({ ...userDto })
 
-        await tokenService.saveToken(userDto.id, tokens.refreshToken)
+            await tokenService.saveToken(userDto.id, tokens.refreshToken)
 
-        return {
-            ...tokens,
-            user: userDto
+            return {
+                ...tokens,
+                user: userDto
+            }
         }
-    }
 
     async logout(refreshToken) {
         const token = await tokenService.removeToken(refreshToken)
